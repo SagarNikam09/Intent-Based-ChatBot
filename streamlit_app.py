@@ -6,13 +6,11 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import random
-from exp import CustomLayer
 
 # Load the model and preprocessing objects
 @st.cache_resource
 def load_chatbot_resources():
-    model = load_model('chatbot_model.h5', custom_objects={'CustomLayer': CustomLayer})
-    #model = load_model('chatbot_model.h5')
+    model = load_model('chatbot_model.h5')
     
     try:
         with open('tokenizer.pickle', 'rb') as handle:

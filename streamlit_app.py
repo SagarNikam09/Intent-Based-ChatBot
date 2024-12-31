@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import numpy as np
 from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import random

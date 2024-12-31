@@ -10,6 +10,10 @@ import random
 # Load the model and preprocessing objects
 @st.cache_resource
 def load_chatbot_resources():
+    model = None
+    tokenizer = None
+    label_encoder = None
+    responses_dict = None
     try:
         model = load_model('chatbot_model.h5')
     except Exception as e:

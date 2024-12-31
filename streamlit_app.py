@@ -10,7 +10,12 @@ import random
 # Load the model and preprocessing objects
 @st.cache_resource
 def load_chatbot_resources():
-    model = load_model('chatbot_model.h5')
+    try:
+        model = load_model('chatbot_model.h5')
+    except Exception as e:
+        print("Error loading model:", e)
+        model = None
+    
     
     try:
         with open('tokenizer.pickle', 'rb') as handle:
@@ -18,6 +23,7 @@ def load_chatbot_resources():
             print("Tokenizer loaded successfully.")
     except Exception as e:
         print("Error loading tokenizer:", e)
+        tokenizer = None
 
     try:
         with open('label_encoder.pickle', 'rb') as handle:
@@ -25,6 +31,7 @@ def load_chatbot_resources():
             print("Label encoder loaded successfully.")
     except Exception as e:
         print("Error loading label encoder:", e)
+        label_encoder = None
 
     try:
         with open('intents_corrected.json', 'r') as file:
@@ -32,7 +39,8 @@ def load_chatbot_resources():
             responses_dict = {intent['tag']: intent['responses'] for intent in data['intents']}
     except Exception as e:
         print("Error loading responses dictionary:", e)
-    
+        responses_dict = None
+
     return model, tokenizer, label_encoder, responses_dict
 
 def predict_intent(text, model, tokenizer, label_encoder, max_len):

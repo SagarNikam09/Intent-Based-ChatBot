@@ -14,11 +14,19 @@ def load_chatbot_resources():
     model = load_model('chatbot_model.h5', custom_objects={'CustomLayer': CustomLayer})
     #model = load_model('chatbot_model.h5')
     
-    with open('tokenizer.pickle', 'rb') as handle:
-        tokenizer = pickle.load(handle)
-    
-    with open('label_encoder.pickle', 'rb') as handle:
-        label_encoder = pickle.load(handle)
+    try:
+        with open('tokenizer.pickle', 'rb') as handle:
+            tokenizer = pickle.load(handle)
+            print("Tokenizer loaded successfully.")
+    except Exception as e:
+        print("Error loading tokenizer:", e)
+
+    try:
+        with open('label_encoder.pickle', 'rb') as handle:
+            label_encoder = pickle.load(handle)
+            print("Label encoder loaded successfully.")
+    except Exception as e:
+        print("Error loading label encoder:", e)
         
     with open('intents_corrected.json', 'r') as file:
         data = json.load(file)

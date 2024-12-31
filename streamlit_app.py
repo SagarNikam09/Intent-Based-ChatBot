@@ -25,10 +25,13 @@ def load_chatbot_resources():
             print("Label encoder loaded successfully.")
     except Exception as e:
         print("Error loading label encoder:", e)
-        
-    with open('intents_corrected.json', 'r') as file:
-        data = json.load(file)
-        responses_dict = {intent['tag']: intent['responses'] for intent in data['intents']}
+
+    try:
+        with open('intents_corrected.json', 'r') as file:
+            data = json.load(file)
+            responses_dict = {intent['tag']: intent['responses'] for intent in data['intents']}
+    except Exception as e:
+        print("Error loading responses dictionary:", e)
     
     return model, tokenizer, label_encoder, responses_dict
 

@@ -1,8 +1,6 @@
-tensorflow==2.10.0
-numpy==1.21.6
-Keras-Preprocessing==1.1.2
-scikit-learn==1.0.2
-streamlit==1.18.0
-pickle-mixin==1.0.2
-keras-tuner==1.3.5
-altair==4.1.0
+tensorflow
+numpy
+Keras-Preprocessing
+scikit-learn
+streamlit
+pickle-mixin

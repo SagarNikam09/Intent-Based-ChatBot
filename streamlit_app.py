@@ -13,6 +13,7 @@ def load_chatbot_resources():
 
     try:
         model = load_model('chatbot_model.h5')
+        print("Model loaded successfully.")
     except Exception as e:
         print("Error loading model:", e)
     
@@ -35,9 +36,10 @@ def load_chatbot_resources():
         with open('intents_corrected.json', 'r') as file:
             data = json.load(file)
             responses_dict = {intent['tag']: intent['responses'] for intent in data['intents']}
+            print("Responses dictionary loaded successfully.")
     except Exception as e:
         print("Error loading responses dictionary:", e)
-        
+
     return model, tokenizer, label_encoder, responses_dict
 
 def predict_intent(text, model, tokenizer, label_encoder, max_len):

@@ -21,7 +21,7 @@ def load_chatbot_resources():
     
     try:
         with open('tokenizer.pickle', 'rb') as handle:
-            tokenizer = joblib.load(handle)
+            tokenizer = pickle.load(handle)
             print("Tokenizer loaded successfully.")
     except Exception as e:
         print("Error loading tokenizer:", e)

@@ -4,3 +4,4 @@ Keras-Preprocessing
 scikit-learn
 streamlit
 pickle-mixin
+joblib==1.2.0

@@ -6,6 +6,7 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import random
+import joblib
 
 # Load the model and preprocessing objects
 @st.cache_resource
@@ -20,7 +21,7 @@ def load_chatbot_resources():
     
     try:
         with open('tokenizer.pickle', 'rb') as handle:
-            tokenizer = pickle.load(handle)
+            tokenizer = joblib.load(handle)
             print("Tokenizer loaded successfully.")
     except Exception as e:
         print("Error loading tokenizer:", e)

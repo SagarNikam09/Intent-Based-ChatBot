@@ -6,7 +6,6 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import pickle
 import random
-import joblib
 
 # Load the model and preprocessing objects
 @st.cache_resource
@@ -61,6 +60,13 @@ def main():
     st.title("AI Chatbot 🤖")
     st.write("Hello! I'm your AI assistant. Ask me anything!")
 
+    tab = st.sidebar.radio("Navigation", ["Chat", "History"])
+    if tab == "Chat":
+        chatbot()
+    else:
+        chat_history()
+    
+def chatbot():
     # Load resources
     model, tokenizer, label_encoder, responses_dict = load_chatbot_resources()
     max_len = model.input_shape[1]
@@ -102,10 +108,17 @@ def main():
         - And much more!
         """)
         
-        # Add a clear chat button
-        if st.button("Clear Chat"):
-            st.session_state.messages = []
-            st.rerun()
+def chat_history():
+    if 'messages' not in st.session_state:
+        st.session_state.messages = []
+
+    if st.sidebar.button("Clear Chat"):
+        st.session_state.messages = []
+        st.rerun()
+
+    if st.session_state.messages:
+        for i, message in enumerate(st.session_state.messages):
+            st.write(f"**{message['role'].title()}**: {message['content']}")
 
 if __name__ == "__main__":
     main() 

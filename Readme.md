@@ -56,6 +56,8 @@ chatbot/
 - Streamlined message processing pipeline
 - Responsive design
 
+!![[Output]](output.png)
+
 ## Installation
 
 1. Clone the repository:

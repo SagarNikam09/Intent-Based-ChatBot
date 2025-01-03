@@ -16,6 +16,9 @@ A sophisticated chatbot implementation using neural networks for intent classifi
 - **Dense Layers**: Multiple layers with dropout for regularization
 - **Softmax Activation**: Enables multi-class intent classification
 
+![[System Architecture]](System-Architecture.png)
+![[Sequence]](Sequence.png)
+
 ## Project Structure
 
 ```
